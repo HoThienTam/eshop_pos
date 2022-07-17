@@ -1,0 +1,9 @@
+{
+    "loginTitle": "Login",
+    "@loginTitle": {
+      "description": "The title of your login page"
+    },
+    "login": "Login",
+    "username": "Username",
+    "password": "Password"
+}
