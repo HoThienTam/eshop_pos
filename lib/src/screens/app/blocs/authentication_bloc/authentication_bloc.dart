@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../services/authentication_repository.dart';
+import '../../services/authentication_repository.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
