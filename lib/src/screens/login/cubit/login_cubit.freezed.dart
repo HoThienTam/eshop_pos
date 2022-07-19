@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoginState {
   AuthenticationModel get authenticationModel =>
       throw _privateConstructorUsedError;
-  String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoginStateCopyWith<LoginState> get copyWith =>
@@ -30,7 +29,7 @@ abstract class $LoginStateCopyWith<$Res> {
   factory $LoginStateCopyWith(
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res>;
-  $Res call({AuthenticationModel authenticationModel, String? errorMessage});
+  $Res call({AuthenticationModel authenticationModel});
 
   $AuthenticationModelCopyWith<$Res> get authenticationModel;
 }
@@ -46,17 +45,12 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
   @override
   $Res call({
     Object? authenticationModel = freezed,
-    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       authenticationModel: authenticationModel == freezed
           ? _value.authenticationModel
           : authenticationModel // ignore: cast_nullable_to_non_nullable
               as AuthenticationModel,
-      errorMessage: errorMessage == freezed
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 
@@ -75,7 +69,7 @@ abstract class _$$_InitialCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
   @override
-  $Res call({AuthenticationModel authenticationModel, String? errorMessage});
+  $Res call({AuthenticationModel authenticationModel});
 
   @override
   $AuthenticationModelCopyWith<$Res> get authenticationModel;
@@ -93,17 +87,12 @@ class __$$_InitialCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? authenticationModel = freezed,
-    Object? errorMessage = freezed,
   }) {
     return _then(_$_Initial(
-      authenticationModel: authenticationModel == freezed
+      authenticationModel == freezed
           ? _value.authenticationModel
           : authenticationModel // ignore: cast_nullable_to_non_nullable
               as AuthenticationModel,
-      errorMessage: errorMessage == freezed
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -111,16 +100,14 @@ class __$$_InitialCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial({required this.authenticationModel, this.errorMessage});
+  const _$_Initial(this.authenticationModel);
 
   @override
   final AuthenticationModel authenticationModel;
-  @override
-  final String? errorMessage;
 
   @override
   String toString() {
-    return 'LoginState(authenticationModel: $authenticationModel, errorMessage: $errorMessage)';
+    return 'LoginState(authenticationModel: $authenticationModel)';
   }
 
   @override
@@ -129,16 +116,12 @@ class _$_Initial implements _Initial {
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
             const DeepCollectionEquality()
-                .equals(other.authenticationModel, authenticationModel) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+                .equals(other.authenticationModel, authenticationModel));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(authenticationModel),
-      const DeepCollectionEquality().hash(errorMessage));
+      runtimeType, const DeepCollectionEquality().hash(authenticationModel));
 
   @JsonKey(ignore: true)
   @override
@@ -147,14 +130,11 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements LoginState {
-  const factory _Initial(
-      {required final AuthenticationModel authenticationModel,
-      final String? errorMessage}) = _$_Initial;
+  const factory _Initial(final AuthenticationModel authenticationModel) =
+      _$_Initial;
 
   @override
   AuthenticationModel get authenticationModel;
-  @override
-  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>

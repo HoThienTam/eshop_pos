@@ -2,7 +2,7 @@ part of 'loading_bloc.dart';
 
 @freezed
 class LoadingState with _$LoadingState {
-  const factory LoadingState(LoadStatus status, {String error}) = _LoadingState;
+  const factory LoadingState(LoadStatus status, {@Default('') String error}) = _LoadingState;
 }
 
 enum LoadStatus { init, loading, success, failure, empty }

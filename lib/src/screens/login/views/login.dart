@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../l10n/l10n.dart';
 import '../../../layout/insets.dart';
 import '../../../layout/size_config.dart';
+import '../../app/blocs/bloc.dart';
 import 'login_form.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -12,16 +14,29 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig config = SizeConfig();
     config.init(context);
-    return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        body: Background(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [ImageAndTitle(), LoginForm()],
+    return BlocListener<LoadingBloc, LoadingState>(
+      listenWhen: (previous, current) => previous.status != current.status,
+      listener: (context, state) {
+        if (state.status.isLoading) {
+          showDialog(
+              context: context,
+              builder: (context) => const Center(child: CircularProgressIndicator()),
+              barrierDismissible: false);
+        } else {
+          Navigator.of(context, rootNavigator: true).pop('dialog');
+        }
+      },
+      child: Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          body: Background(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [ImageAndTitle(), LoginForm()],
+              ),
             ),
-          ),
-        ));
+          )),
+    );
   }
 }
 

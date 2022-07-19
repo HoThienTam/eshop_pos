@@ -13,21 +13,21 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   AuthenticationBloc({required AuthenticationRepository authenticationRepository})
       : _authenticationRepository = authenticationRepository,
         super(const AuthenticationState(AuthenticationStatus.unauthenticated)) {
-    on<_AppLogoutRequested>(_onLogoutRequested);
-    on<_AppAuthenticationStatusChanged>(_onAuthenticationStatusChanged);
+    on<_AuthenticationLogoutRequested>(_onLogoutRequested);
+    on<_AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
     _authenticationStatusSubscription =
-        _authenticationRepository.status.listen((status) => add(_AppAuthenticationStatusChanged(status)));
+        _authenticationRepository.status.listen((status) => add(_AuthenticationStatusChanged(status)));
   }
 
   final AuthenticationRepository _authenticationRepository;
   late StreamSubscription<AuthenticationStatus> _authenticationStatusSubscription;
 
-  void _onLogoutRequested(_AppLogoutRequested event, Emitter<AuthenticationState> emit) {
+  void _onLogoutRequested(_AuthenticationLogoutRequested event, Emitter<AuthenticationState> emit) {
     emit(state.copyWith(authenticationStatus: AuthenticationStatus.unauthenticated));
   }
 
   void _onAuthenticationStatusChanged(
-    _AppAuthenticationStatusChanged event,
+    _AuthenticationStatusChanged event,
     Emitter<AuthenticationState> emit,
   ) async {
     switch (event.status) {

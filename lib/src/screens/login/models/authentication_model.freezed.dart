@@ -20,8 +20,8 @@ AuthenticationModel _$AuthenticationModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AuthenticationModel {
-  String get username => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  InputModel get username => throw _privateConstructorUsedError;
+  InputModel get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,10 @@ abstract class $AuthenticationModelCopyWith<$Res> {
   factory $AuthenticationModelCopyWith(
           AuthenticationModel value, $Res Function(AuthenticationModel) then) =
       _$AuthenticationModelCopyWithImpl<$Res>;
-  $Res call({String username, String password});
+  $Res call({InputModel username, InputModel password});
+
+  $InputModelCopyWith<$Res> get username;
+  $InputModelCopyWith<$Res> get password;
 }
 
 /// @nodoc
@@ -55,12 +58,26 @@ class _$AuthenticationModelCopyWithImpl<$Res>
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as InputModel,
       password: password == freezed
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as InputModel,
     ));
+  }
+
+  @override
+  $InputModelCopyWith<$Res> get username {
+    return $InputModelCopyWith<$Res>(_value.username, (value) {
+      return _then(_value.copyWith(username: value));
+    });
+  }
+
+  @override
+  $InputModelCopyWith<$Res> get password {
+    return $InputModelCopyWith<$Res>(_value.password, (value) {
+      return _then(_value.copyWith(password: value));
+    });
   }
 }
 
@@ -71,7 +88,12 @@ abstract class _$$_AuthenticationModelCopyWith<$Res>
           $Res Function(_$_AuthenticationModel) then) =
       __$$_AuthenticationModelCopyWithImpl<$Res>;
   @override
-  $Res call({String username, String password});
+  $Res call({InputModel username, InputModel password});
+
+  @override
+  $InputModelCopyWith<$Res> get username;
+  @override
+  $InputModelCopyWith<$Res> get password;
 }
 
 /// @nodoc
@@ -94,11 +116,11 @@ class __$$_AuthenticationModelCopyWithImpl<$Res>
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as InputModel,
       password: password == freezed
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as InputModel,
     ));
   }
 }
@@ -115,9 +137,9 @@ class _$_AuthenticationModel
       _$$_AuthenticationModelFromJson(json);
 
   @override
-  final String username;
+  final InputModel username;
   @override
-  final String password;
+  final InputModel password;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -163,16 +185,16 @@ class _$_AuthenticationModel
 
 abstract class _AuthenticationModel implements AuthenticationModel {
   const factory _AuthenticationModel(
-      {required final String username,
-      required final String password}) = _$_AuthenticationModel;
+      {required final InputModel username,
+      required final InputModel password}) = _$_AuthenticationModel;
 
   factory _AuthenticationModel.fromJson(Map<String, dynamic> json) =
       _$_AuthenticationModel.fromJson;
 
   @override
-  String get username;
+  InputModel get username;
   @override
-  String get password;
+  InputModel get password;
   @override
   @JsonKey(ignore: true)
   _$$_AuthenticationModelCopyWith<_$_AuthenticationModel> get copyWith =>
