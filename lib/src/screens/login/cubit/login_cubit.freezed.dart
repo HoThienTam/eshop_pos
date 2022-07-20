@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoginState {
-  AuthenticationModel get authenticationModel =>
-      throw _privateConstructorUsedError;
+  InputModel get username => throw _privateConstructorUsedError;
+  InputModel get password => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoginStateCopyWith<LoginState> get copyWith =>
@@ -29,9 +29,10 @@ abstract class $LoginStateCopyWith<$Res> {
   factory $LoginStateCopyWith(
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res>;
-  $Res call({AuthenticationModel authenticationModel});
+  $Res call({InputModel username, InputModel password});
 
-  $AuthenticationModelCopyWith<$Res> get authenticationModel;
+  $InputModelCopyWith<$Res> get username;
+  $InputModelCopyWith<$Res> get password;
 }
 
 /// @nodoc
@@ -44,21 +45,32 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? authenticationModel = freezed,
+    Object? username = freezed,
+    Object? password = freezed,
   }) {
     return _then(_value.copyWith(
-      authenticationModel: authenticationModel == freezed
-          ? _value.authenticationModel
-          : authenticationModel // ignore: cast_nullable_to_non_nullable
-              as AuthenticationModel,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as InputModel,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as InputModel,
     ));
   }
 
   @override
-  $AuthenticationModelCopyWith<$Res> get authenticationModel {
-    return $AuthenticationModelCopyWith<$Res>(_value.authenticationModel,
-        (value) {
-      return _then(_value.copyWith(authenticationModel: value));
+  $InputModelCopyWith<$Res> get username {
+    return $InputModelCopyWith<$Res>(_value.username, (value) {
+      return _then(_value.copyWith(username: value));
+    });
+  }
+
+  @override
+  $InputModelCopyWith<$Res> get password {
+    return $InputModelCopyWith<$Res>(_value.password, (value) {
+      return _then(_value.copyWith(password: value));
     });
   }
 }
@@ -69,10 +81,12 @@ abstract class _$$_InitialCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
   @override
-  $Res call({AuthenticationModel authenticationModel});
+  $Res call({InputModel username, InputModel password});
 
   @override
-  $AuthenticationModelCopyWith<$Res> get authenticationModel;
+  $InputModelCopyWith<$Res> get username;
+  @override
+  $InputModelCopyWith<$Res> get password;
 }
 
 /// @nodoc
@@ -86,13 +100,18 @@ class __$$_InitialCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? authenticationModel = freezed,
+    Object? username = freezed,
+    Object? password = freezed,
   }) {
     return _then(_$_Initial(
-      authenticationModel == freezed
-          ? _value.authenticationModel
-          : authenticationModel // ignore: cast_nullable_to_non_nullable
-              as AuthenticationModel,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as InputModel,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as InputModel,
     ));
   }
 }
@@ -100,14 +119,16 @@ class __$$_InitialCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial(this.authenticationModel);
+  const _$_Initial({required this.username, required this.password});
 
   @override
-  final AuthenticationModel authenticationModel;
+  final InputModel username;
+  @override
+  final InputModel password;
 
   @override
   String toString() {
-    return 'LoginState(authenticationModel: $authenticationModel)';
+    return 'LoginState(username: $username, password: $password)';
   }
 
   @override
@@ -115,13 +136,15 @@ class _$_Initial implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
-            const DeepCollectionEquality()
-                .equals(other.authenticationModel, authenticationModel));
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality().equals(other.password, password));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(authenticationModel));
+      runtimeType,
+      const DeepCollectionEquality().hash(username),
+      const DeepCollectionEquality().hash(password));
 
   @JsonKey(ignore: true)
   @override
@@ -130,11 +153,14 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements LoginState {
-  const factory _Initial(final AuthenticationModel authenticationModel) =
-      _$_Initial;
+  const factory _Initial(
+      {required final InputModel username,
+      required final InputModel password}) = _$_Initial;
 
   @override
-  AuthenticationModel get authenticationModel;
+  InputModel get username;
+  @override
+  InputModel get password;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>

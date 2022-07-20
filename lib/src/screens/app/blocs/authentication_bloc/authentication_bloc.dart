@@ -29,7 +29,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   void _onAuthenticationStatusChanged(
     _AuthenticationStatusChanged event,
     Emitter<AuthenticationState> emit,
-  ) async {
+  ) {
     switch (event.status) {
       case AuthenticationStatus.unauthenticated:
         return emit(state.copyWith(authenticationStatus: AuthenticationStatus.unauthenticated));

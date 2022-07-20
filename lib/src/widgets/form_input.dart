@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../layout/insets.dart';
+import '../layout/size_config.dart';
 
-class FormInput extends StatelessWidget {
+class FormInput extends StatefulWidget {
   const FormInput({
     Key? key,
     this.inputType = TextInputType.text,
@@ -17,29 +18,62 @@ class FormInput extends StatelessWidget {
   final String? hintText;
   final IconData? icon;
   final bool isObscure;
+
+  @override
+  State<FormInput> createState() => _FormInputState();
+}
+
+class _FormInputState extends State<FormInput> {
+  bool _isObscure = true;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      keyboardType: inputType,
-      textInputAction: inputAction,
+      keyboardType: widget.inputType,
+      textInputAction: widget.inputAction,
       cursorColor: Theme.of(context).primaryColor,
       onChanged: (value) {},
-      obscureText: isObscure,
+      obscureText: widget.isObscure && _isObscure,
       decoration: InputDecoration(
-          hintText: hintText,
+          hintText: widget.hintText,
           isDense: true,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(50), borderSide: BorderSide.none),
-          prefixIcon: icon != null
+          prefixIcon: widget.icon != null
               ? Padding(
                   padding: const EdgeInsets.all(Insets.defaultPadding),
                   child: Icon(
-                    icon,
+                    widget.icon,
                     color: Theme.of(context).primaryColor,
+                    size: getProportionateScreenHeight(20),
                   ),
+                )
+              : null,
+          suffixIcon: widget.isObscure
+              ? IconButton(
+                  splashRadius: 1,
+                  padding: EdgeInsets.zero,
+                  onPressed: _setObscure,
+                  icon: _isObscure
+                      ? Icon(
+                          Icons.visibility,
+                          color: Theme.of(context).primaryColor,
+                          size: getProportionateScreenHeight(20),
+                        )
+                      : Icon(
+                          Icons.visibility_off,
+                          color: Theme.of(context).primaryColor,
+                          size: getProportionateScreenHeight(20),
+                        ),
                 )
               : null,
           filled: true,
           fillColor: Theme.of(context).colorScheme.primaryContainer),
     );
+  }
+
+  void _setObscure() {
+    setState(() {
+      _isObscure = !_isObscure;
+    });
   }
 }

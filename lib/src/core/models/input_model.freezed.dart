@@ -14,17 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-InputModel _$InputModelFromJson(Map<String, dynamic> json) {
-  return _InputModel.fromJson(json);
-}
-
 /// @nodoc
 mixin _$InputModel {
   String get value => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $InputModelCopyWith<InputModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -113,12 +108,9 @@ class __$$_InputModelCopyWithImpl<$Res> extends _$InputModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_InputModel implements _InputModel {
   const _$_InputModel({this.value = '', this.error = '', this.isValid = true});
-
-  factory _$_InputModel.fromJson(Map<String, dynamic> json) =>
-      _$$_InputModelFromJson(json);
 
   @override
   @JsonKey()
@@ -145,7 +137,6 @@ class _$_InputModel implements _InputModel {
             const DeepCollectionEquality().equals(other.isValid, isValid));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -157,11 +148,6 @@ class _$_InputModel implements _InputModel {
   @override
   _$$_InputModelCopyWith<_$_InputModel> get copyWith =>
       __$$_InputModelCopyWithImpl<_$_InputModel>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_InputModelToJson(this);
-  }
 }
 
 abstract class _InputModel implements InputModel {
@@ -169,9 +155,6 @@ abstract class _InputModel implements InputModel {
       {final String value,
       final String error,
       final bool isValid}) = _$_InputModel;
-
-  factory _InputModel.fromJson(Map<String, dynamic> json) =
-      _$_InputModel.fromJson;
 
   @override
   String get value;

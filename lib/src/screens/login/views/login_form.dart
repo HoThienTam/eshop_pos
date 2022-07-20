@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../l10n/l10n.dart';
 import '../../../layout/insets.dart';
 import '../../../widgets/form_input.dart';
+import '../../app/services/authentication_repository.dart';
 import '../cubit/login_cubit.dart';
 
 class LoginForm extends StatelessWidget {
@@ -19,7 +20,7 @@ class LoginForm extends StatelessWidget {
         Expanded(
             flex: 8,
             child: BlocProvider(
-              create: (context) => LoginCubit(),
+              create: (context) => LoginCubit(context.read<AuthenticationRepository>()),
               child: Form(
                 child: Column(children: [
                   FormInput(
