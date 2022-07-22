@@ -23,18 +23,32 @@ class LoginForm extends StatelessWidget {
               create: (context) => LoginCubit(context.read<AuthenticationRepository>()),
               child: Form(
                 child: Column(children: [
-                  FormInput(
-                    inputAction: TextInputAction.next,
-                    icon: Icons.person,
-                    hintText: AppLocalizations.of(context).username,
+                  BlocBuilder<LoginCubit, LoginState>(
+                    buildWhen: (previous, current) => previous.username != current.username,
+                    builder: (context, state) {
+                      return FormInput(
+                        inputAction: TextInputAction.next,
+                        icon: Icons.person,
+                        hintText: AppLocalizations.of(context).username,
+                        onChanged: (value) => context.read<LoginCubit>().usernameChanged(value),
+                        errorText: state.username.error,
+                      );
+                    },
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: Insets.defaultPadding),
-                    child: FormInput(
-                      inputAction: TextInputAction.done,
-                      icon: Icons.lock,
-                      hintText: AppLocalizations.of(context).password,
-                      isObscure: true,
+                    child: BlocBuilder<LoginCubit, LoginState>(
+                      buildWhen: (previous, current) => previous.password != current.password,
+                      builder: (context, state) {
+                        return FormInput(
+                          inputAction: TextInputAction.done,
+                          icon: Icons.lock,
+                          hintText: AppLocalizations.of(context).password,
+                          onChanged: (value) => context.read<LoginCubit>().passwordChanged(value),
+                          isObscure: true,
+                          errorText: state.password.error,
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(height: Insets.defaultPadding),

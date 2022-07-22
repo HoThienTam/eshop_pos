@@ -11,27 +11,30 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> with BaseBloc {
   LoginCubit(this._repository) : super(const LoginState(username: InputModel(), password: InputModel()));
   final AuthenticationRepository _repository;
-  void usernameChanged(InputModel input) {
+
+  void usernameChanged(String username) {
     final usernameRegex = RegExp(r'^[a-zA-Z0-9_-]{8,25}$');
-    if (usernameRegex.hasMatch(input.value)) {
-      input.copyWith(isValid: true);
+    InputModel newUsername = state.username;
+
+    if (usernameRegex.hasMatch(username)) {
+      newUsername = state.username.copyWith(value: username, isValid: true, error: '');
     } else {
-      input.copyWith(isValid: false, error: 'Username must be between 8 to 25 characters');
+      newUsername = state.username
+          .copyWith(value: username, isValid: false, error: 'Username must be between 8 to 25 characters!');
     }
-    emit(state.copyWith(username: input));
+    emit(state.copyWith(username: newUsername));
   }
 
-  void passwordChanged(InputModel input) {
+  void passwordChanged(String password) {
     final passwordRegex = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$');
-    if (passwordRegex.hasMatch(input.value)) {
-      input.copyWith(isValid: true);
+    InputModel newPassword;
+
+    if (passwordRegex.hasMatch(password)) {
+      newPassword = state.password.copyWith(value: password, isValid: true, error: '');
     } else {
-      input.copyWith(
-          isValid: false,
-          error: 'Password must be minimum eight characters, at least one upper case English letter,'
-              'one lower case English letter, one number and one special character');
+      newPassword = state.password.copyWith(value: password, isValid: false, error: 'Invalid password!');
     }
-    emit(state.copyWith(password: input));
+    emit(state.copyWith(password: newPassword));
   }
 
   void login() async {

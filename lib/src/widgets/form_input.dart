@@ -11,6 +11,8 @@ class FormInput extends StatefulWidget {
     this.hintText,
     this.icon,
     this.isObscure = false,
+    this.onChanged,
+    this.errorText,
   }) : super(key: key);
 
   final TextInputType inputType;
@@ -18,6 +20,8 @@ class FormInput extends StatefulWidget {
   final String? hintText;
   final IconData? icon;
   final bool isObscure;
+  final Function(String)? onChanged;
+  final String? errorText;
 
   @override
   State<FormInput> createState() => _FormInputState();
@@ -32,10 +36,11 @@ class _FormInputState extends State<FormInput> {
       keyboardType: widget.inputType,
       textInputAction: widget.inputAction,
       cursorColor: Theme.of(context).primaryColor,
-      onChanged: (value) {},
+      onChanged: widget.onChanged,
       obscureText: widget.isObscure && _isObscure,
       decoration: InputDecoration(
           hintText: widget.hintText,
+          errorText: widget.errorText,
           isDense: true,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(50), borderSide: BorderSide.none),
           prefixIcon: widget.icon != null
