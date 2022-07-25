@@ -5,5 +5,13 @@
     },
     "login": "Login",
     "username": "Username",
-    "password": "Password"
+    "usernameValidationText": "Username must be between 8 to 25 characters!",
+    "@usernameValidationText": {
+      "description": "The text used when validate username"
+    },
+    "password": "Password",
+    "passwordValidationText": "Invalid password!",
+    "@passwordValidationText": {
+      "description": "The text used when validate password"
+    }
 }

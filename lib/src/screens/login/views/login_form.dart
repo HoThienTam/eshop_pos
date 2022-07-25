@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../l10n/l10n.dart';
 import '../../../layout/insets.dart';
+import '../../../repositories/authentication_repository.dart';
 import '../../../widgets/form_input.dart';
-import '../../app/services/authentication_repository.dart';
 import '../cubit/login_cubit.dart';
 
 class LoginForm extends StatelessWidget {

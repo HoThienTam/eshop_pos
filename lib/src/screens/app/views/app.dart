@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../injection.dart';
 import '../../../l10n/l10n.dart';
+import '../../../repositories/authentication_repository.dart';
 import '../../../themes/light_theme.dart';
 import '../../login/login.dart';
 import '../blocs/bloc.dart';
-import '../services/authentication_repository.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider(
-      create: (context) => AuthenticationRepository(),
+      create: (context) => getIt<AuthenticationRepository>(),
       child: MultiBlocProvider(
         providers: [
           BlocProvider(

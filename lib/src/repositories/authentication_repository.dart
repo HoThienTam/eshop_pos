@@ -1,5 +1,9 @@
 import 'dart:async';
 
+import 'package:injectable/injectable.dart';
+
+import '../local_services/access_token_service/access_token_service.dart';
+
 enum AuthenticationStatus { authenticated, unauthenticated }
 
 extension AuthenticationStatusX on AuthenticationStatus {
@@ -8,12 +12,16 @@ extension AuthenticationStatusX on AuthenticationStatus {
   bool get isUnAuthenticated => !isAuthenticated;
 }
 
+@injectable
 class AuthenticationRepository {
   final _controller = StreamController<AuthenticationStatus>();
 
+  AuthenticationRepository(this._accessTokenService);
+
   Stream<AuthenticationStatus> get status => _controller.stream;
 
-  Future<void> logIn({
+  final AccessTokenService _accessTokenService;
+  Future<String> logIn({
     required String username,
     required String password,
   }) async {
@@ -21,6 +29,8 @@ class AuthenticationRepository {
       const Duration(seconds: 2),
       () => _controller.add(AuthenticationStatus.authenticated),
     );
+    _accessTokenService.storeTokenInfo('token');
+    return 'token';
   }
 
   void logOut() {

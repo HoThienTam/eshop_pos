@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../services/authentication_repository.dart';
+import '../../../../repositories/authentication_repository.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
@@ -13,21 +13,21 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   AuthenticationBloc({required AuthenticationRepository authenticationRepository})
       : _authenticationRepository = authenticationRepository,
         super(const AuthenticationState(AuthenticationStatus.unauthenticated)) {
-    on<_AuthenticationLogoutRequested>(_onLogoutRequested);
-    on<_AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
+    on<AuthenticationLogoutRequested>(_onLogoutRequested);
+    on<AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
     _authenticationStatusSubscription =
-        _authenticationRepository.status.listen((status) => add(_AuthenticationStatusChanged(status)));
+        _authenticationRepository.status.listen((status) => add(AuthenticationStatusChanged(status)));
   }
 
   final AuthenticationRepository _authenticationRepository;
   late StreamSubscription<AuthenticationStatus> _authenticationStatusSubscription;
 
-  void _onLogoutRequested(_AuthenticationLogoutRequested event, Emitter<AuthenticationState> emit) {
+  void _onLogoutRequested(AuthenticationLogoutRequested event, Emitter<AuthenticationState> emit) {
     emit(state.copyWith(authenticationStatus: AuthenticationStatus.unauthenticated));
   }
 
   void _onAuthenticationStatusChanged(
-    _AuthenticationStatusChanged event,
+    AuthenticationStatusChanged event,
     Emitter<AuthenticationState> emit,
   ) {
     switch (event.status) {
