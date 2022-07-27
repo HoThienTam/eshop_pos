@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../core/bloc_base/base_bloc.dart';
 import '../../../core/models/input_model.dart';
@@ -9,10 +9,10 @@ import '../../../repositories/authentication_repository.dart';
 part 'login_cubit.freezed.dart';
 part 'login_state.dart';
 
+@injectable
 class LoginCubit extends Cubit<LoginState> with BaseBloc {
   LoginCubit(this._repository) : super(const LoginState(username: InputModel(), password: InputModel()));
   final AuthenticationRepository _repository;
-  final _storage = const FlutterSecureStorage();
 
   void usernameChanged(String username) {
     final usernameRegex = RegExp(r'^[a-zA-Z0-9_-]{8,25}$');
@@ -45,8 +45,7 @@ class LoginCubit extends Cubit<LoginState> with BaseBloc {
     }
     isBusy = true;
     controller.showIndicator();
-    String token = await _repository.logIn(username: state.username.value, password: state.password.value);
-    _storage.write(key: 'token', value: token);
+    await _repository.logIn(username: state.username.value, password: state.password.value);
     controller.showSuccessfulResult();
     isBusy = false;
   }

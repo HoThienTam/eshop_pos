@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../repositories/authentication_repository.dart';
 
@@ -9,10 +10,10 @@ part 'authentication_event.dart';
 part 'authentication_state.dart';
 part 'authentication_bloc.freezed.dart';
 
+@injectable
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
-  AuthenticationBloc({required AuthenticationRepository authenticationRepository})
-      : _authenticationRepository = authenticationRepository,
-        super(const AuthenticationState(AuthenticationStatus.unauthenticated)) {
+  AuthenticationBloc(this._authenticationRepository)
+      : super(const AuthenticationState(AuthenticationStatus.unauthenticated)) {
     on<AuthenticationLogoutRequested>(_onLogoutRequested);
     on<AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
     _authenticationStatusSubscription =

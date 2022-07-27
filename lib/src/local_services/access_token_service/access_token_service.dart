@@ -6,8 +6,10 @@ import 'access_token_failure.dart';
 
 @injectable
 class AccessTokenService {
-  final _storage = const FlutterSecureStorage();
+  final FlutterSecureStorage _storage;
   static const String tokenInfo = 'CurrentSession.TokenInfo';
+
+  AccessTokenService(this._storage);
 
   Future<void> storeTokenInfo(String token) async {
     _storage.write(key: tokenInfo, value: token);

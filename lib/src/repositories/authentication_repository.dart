@@ -12,15 +12,15 @@ extension AuthenticationStatusX on AuthenticationStatus {
   bool get isUnAuthenticated => !isAuthenticated;
 }
 
-@injectable
+@lazySingleton
 class AuthenticationRepository {
-  final _controller = StreamController<AuthenticationStatus>();
+  final AccessTokenService _accessTokenService;
 
   AuthenticationRepository(this._accessTokenService);
 
+  final _controller = StreamController<AuthenticationStatus>();
   Stream<AuthenticationStatus> get status => _controller.stream;
 
-  final AccessTokenService _accessTokenService;
   Future<String> logIn({
     required String username,
     required String password,
@@ -29,7 +29,7 @@ class AuthenticationRepository {
       const Duration(seconds: 2),
       () => _controller.add(AuthenticationStatus.authenticated),
     );
-    _accessTokenService.storeTokenInfo('token');
+    await _accessTokenService.storeTokenInfo('token');
     return 'token';
   }
 

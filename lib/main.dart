@@ -7,7 +7,7 @@ import 'src/screens/app/app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  configureInjection('prod');
+  configureInjection('dev');
   BlocOverrides.runZoned(
     () => runApp(const MyApp()),
     blocObserver: AppBlocObserver(),

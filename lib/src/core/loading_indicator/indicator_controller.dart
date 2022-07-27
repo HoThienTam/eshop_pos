@@ -1,33 +1,13 @@
-import 'dart:async';
-
 import '../../screens/app/blocs/bloc.dart';
-import 'i_indicator_controller.dart';
 
-class IndicatorController implements IIndicatorController {
-  final _controller = StreamController<LoadingState>();
-  @override
-  Stream<LoadingState> get status => _controller.stream;
+abstract class IndicatorController {
+  Stream<LoadingState> get status;
 
-  static final IndicatorController _indicatorController = IndicatorController._internal();
+  void showIndicator();
 
-  factory IndicatorController() {
-    return _indicatorController;
-  }
+  void showSuccessfulResult();
 
-  IndicatorController._internal();
+  void showFailedResult(String error);
 
-  @override
-  void showIndicator() {
-    _controller.add(const LoadingState(LoadStatus.loading));
-  }
-
-  @override
-  void showSuccessfulResult() {
-    _controller.add(const LoadingState(LoadStatus.success));
-  }
-
-  @override
-  void showFailedResult(String error) {
-    _controller.add(LoadingState(LoadStatus.failure, error: error));
-  }
+  void dispose();
 }

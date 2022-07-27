@@ -13,26 +13,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => getIt<AuthenticationRepository>(),
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => LoadingBloc(),
-          ),
-          BlocProvider(
-            create: (context) => AuthenticationBloc(authenticationRepository: context.read<AuthenticationRepository>()),
-          ),
-        ],
-        child: MaterialApp(
-          theme: lightThemeData(context),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-            builder: (context, state) {
-              return state.authenticationStatus.isUnAuthenticated ? const LoginScreen() : Container();
-            },
-          ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<LoadingBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<AuthenticationBloc>(),
+        ),
+      ],
+      child: MaterialApp(
+        theme: lightThemeData(context),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+          builder: (context, state) {
+            return state.authenticationStatus.isUnAuthenticated ? const LoginScreen() : Container();
+          },
         ),
       ),
     );

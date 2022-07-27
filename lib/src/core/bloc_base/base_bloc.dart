@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../loading_indicator/i_indicator_controller.dart';
+import '../../../injection.dart';
 import '../loading_indicator/indicator_controller.dart';
 
 class BaseBloc {
   @protected
-  final IIndicatorController controller = IndicatorController();
+  final IndicatorController controller = getIt<IndicatorController>();
 
   @protected
   bool isBusy = false;
