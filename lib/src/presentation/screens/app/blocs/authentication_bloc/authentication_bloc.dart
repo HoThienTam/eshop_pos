@@ -2,20 +2,20 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 
-import '../../../../repositories/authentication_repository.dart';
+import '../../../../../repositories/authentication_repository.dart';
+import '../../models/authentication_result.dart';
 
+part 'authentication_bloc.freezed.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
-part 'authentication_bloc.freezed.dart';
 
-@injectable
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc(this._authenticationRepository)
-      : super(const AuthenticationState(AuthenticationStatus.unauthenticated)) {
+      : super(const AuthenticationState(AuthenticationStatus.unauthenticated, AuthenticationResult())) {
     on<AuthenticationLogoutRequested>(_onLogoutRequested);
     on<AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
+    on<AuthenticationStarted>(_onAuthenticationStarted);
     _authenticationStatusSubscription =
         _authenticationRepository.status.listen((status) => add(AuthenticationStatusChanged(status)));
   }
@@ -27,10 +27,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     emit(state.copyWith(authenticationStatus: AuthenticationStatus.unauthenticated));
   }
 
-  void _onAuthenticationStatusChanged(
-    AuthenticationStatusChanged event,
-    Emitter<AuthenticationState> emit,
-  ) {
+  void _onAuthenticationStatusChanged(AuthenticationStatusChanged event, Emitter<AuthenticationState> emit) {
     switch (event.status) {
       case AuthenticationStatus.unauthenticated:
         return emit(state.copyWith(authenticationStatus: AuthenticationStatus.unauthenticated));
@@ -40,6 +37,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
         return emit(state.copyWith(authenticationStatus: AuthenticationStatus.unauthenticated));
     }
   }
+
+  void _onAuthenticationStarted(AuthenticationStarted event, Emitter<AuthenticationState> emit) {}
 
   @override
   Future<void> close() {

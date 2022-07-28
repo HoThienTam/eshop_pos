@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:injectable/injectable.dart';
 
-import '../local_services/access_token_service/access_token_service.dart';
+import '../data_access/data_access.dart' show AccessTokenService;
 
 enum AuthenticationStatus { authenticated, unauthenticated }
 
@@ -37,5 +37,6 @@ class AuthenticationRepository {
     _controller.add(AuthenticationStatus.unauthenticated);
   }
 
+  @disposeMethod
   void dispose() => _controller.close();
 }

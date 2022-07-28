@@ -1,13 +1,15 @@
-import '../../screens/app/blocs/bloc.dart';
-
 abstract class IndicatorController {
-  Stream<LoadingState> get status;
+  Stream<LoadStatus> get status;
 
   void showIndicator();
 
-  void showSuccessfulResult();
-
-  void showFailedResult(String error);
+  void hideIndicator();
 
   void dispose();
+}
+
+enum LoadStatus { loading, done }
+
+extension LoadStatusX on LoadStatus {
+  bool get isLoading => this == LoadStatus.loading;
 }

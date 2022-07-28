@@ -242,7 +242,6 @@ abstract class _LoadStatusChanged implements LoadingEvent {
 /// @nodoc
 mixin _$LoadingState {
   LoadStatus get status => throw _privateConstructorUsedError;
-  String get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoadingStateCopyWith<LoadingState> get copyWith =>
@@ -254,7 +253,7 @@ abstract class $LoadingStateCopyWith<$Res> {
   factory $LoadingStateCopyWith(
           LoadingState value, $Res Function(LoadingState) then) =
       _$LoadingStateCopyWithImpl<$Res>;
-  $Res call({LoadStatus status, String error});
+  $Res call({LoadStatus status});
 }
 
 /// @nodoc
@@ -268,17 +267,12 @@ class _$LoadingStateCopyWithImpl<$Res> implements $LoadingStateCopyWith<$Res> {
   @override
   $Res call({
     Object? status = freezed,
-    Object? error = freezed,
   }) {
     return _then(_value.copyWith(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as LoadStatus,
-      error: error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -290,7 +284,7 @@ abstract class _$$_LoadingStateCopyWith<$Res>
           _$_LoadingState value, $Res Function(_$_LoadingState) then) =
       __$$_LoadingStateCopyWithImpl<$Res>;
   @override
-  $Res call({LoadStatus status, String error});
+  $Res call({LoadStatus status});
 }
 
 /// @nodoc
@@ -307,17 +301,12 @@ class __$$_LoadingStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = freezed,
-    Object? error = freezed,
   }) {
     return _then(_$_LoadingState(
       status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as LoadStatus,
-      error: error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -325,17 +314,14 @@ class __$$_LoadingStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadingState implements _LoadingState {
-  const _$_LoadingState(this.status, {this.error = ''});
+  const _$_LoadingState(this.status);
 
   @override
   final LoadStatus status;
-  @override
-  @JsonKey()
-  final String error;
 
   @override
   String toString() {
-    return 'LoadingState(status: $status, error: $error)';
+    return 'LoadingState(status: $status)';
   }
 
   @override
@@ -343,15 +329,12 @@ class _$_LoadingState implements _LoadingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadingState &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.error, error));
+            const DeepCollectionEquality().equals(other.status, status));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(error));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(status));
 
   @JsonKey(ignore: true)
   @override
@@ -360,13 +343,10 @@ class _$_LoadingState implements _LoadingState {
 }
 
 abstract class _LoadingState implements LoadingState {
-  const factory _LoadingState(final LoadStatus status, {final String error}) =
-      _$_LoadingState;
+  const factory _LoadingState(final LoadStatus status) = _$_LoadingState;
 
   @override
   LoadStatus get status;
-  @override
-  String get error;
   @override
   @JsonKey(ignore: true)
   _$$_LoadingStateCopyWith<_$_LoadingState> get copyWith =>

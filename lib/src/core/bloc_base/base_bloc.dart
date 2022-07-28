@@ -4,9 +4,20 @@ import '../../../injection.dart';
 import '../loading_indicator/indicator_controller.dart';
 
 class BaseBloc {
-  @protected
-  final IndicatorController controller = getIt<IndicatorController>();
+  bool _isBusy = false;
 
   @protected
-  bool isBusy = false;
+  final IndicatorController _controller = getIt<IndicatorController>();
+
+  @protected
+  bool get isBusy => _isBusy;
+  @protected
+  set isBusy(bool value) {
+    if (value == false) {
+      _controller.hideIndicator();
+    } else {
+      _controller.showIndicator();
+    }
+    _isBusy = value;
+  }
 }

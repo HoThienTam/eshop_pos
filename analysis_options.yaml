@@ -12,6 +12,7 @@ linter:
     - no_leading_underscores_for_library_prefixes
     - prefer_relative_imports
     - prefer_single_quotes
+    - avoid_catching_errors
     
 analyzer:
   errors:

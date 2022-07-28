@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../injection.dart';
+import '../../../../../injection.dart';
+import '../../../../repositories/authentication_repository.dart';
 import '../../../l10n/l10n.dart';
-import '../../../repositories/authentication_repository.dart';
 import '../../../themes/light_theme.dart';
 import '../../login/login.dart';
 import '../blocs/bloc.dart';

@@ -21,18 +21,21 @@ mixin _$AuthenticationEvent {
     required TResult Function() authenticationLogoutRequested,
     required TResult Function(AuthenticationStatus status)
         authenticationStatusChanged,
+    required TResult Function() authenticationStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? authenticationLogoutRequested,
     TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? authenticationStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? authenticationLogoutRequested,
     TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? authenticationStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,6 +45,8 @@ mixin _$AuthenticationEvent {
         authenticationLogoutRequested,
     required TResult Function(AuthenticationStatusChanged value)
         authenticationStatusChanged,
+    required TResult Function(AuthenticationStarted value)
+        authenticationStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +55,7 @@ mixin _$AuthenticationEvent {
         authenticationLogoutRequested,
     TResult Function(AuthenticationStatusChanged value)?
         authenticationStatusChanged,
+    TResult Function(AuthenticationStarted value)? authenticationStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +64,7 @@ mixin _$AuthenticationEvent {
         authenticationLogoutRequested,
     TResult Function(AuthenticationStatusChanged value)?
         authenticationStatusChanged,
+    TResult Function(AuthenticationStarted value)? authenticationStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +135,7 @@ class _$AuthenticationLogoutRequested implements AuthenticationLogoutRequested {
     required TResult Function() authenticationLogoutRequested,
     required TResult Function(AuthenticationStatus status)
         authenticationStatusChanged,
+    required TResult Function() authenticationStarted,
   }) {
     return authenticationLogoutRequested();
   }
@@ -137,6 +145,7 @@ class _$AuthenticationLogoutRequested implements AuthenticationLogoutRequested {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? authenticationLogoutRequested,
     TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? authenticationStarted,
   }) {
     return authenticationLogoutRequested?.call();
   }
@@ -146,6 +155,7 @@ class _$AuthenticationLogoutRequested implements AuthenticationLogoutRequested {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? authenticationLogoutRequested,
     TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? authenticationStarted,
     required TResult orElse(),
   }) {
     if (authenticationLogoutRequested != null) {
@@ -161,6 +171,8 @@ class _$AuthenticationLogoutRequested implements AuthenticationLogoutRequested {
         authenticationLogoutRequested,
     required TResult Function(AuthenticationStatusChanged value)
         authenticationStatusChanged,
+    required TResult Function(AuthenticationStarted value)
+        authenticationStarted,
   }) {
     return authenticationLogoutRequested(this);
   }
@@ -172,6 +184,7 @@ class _$AuthenticationLogoutRequested implements AuthenticationLogoutRequested {
         authenticationLogoutRequested,
     TResult Function(AuthenticationStatusChanged value)?
         authenticationStatusChanged,
+    TResult Function(AuthenticationStarted value)? authenticationStarted,
   }) {
     return authenticationLogoutRequested?.call(this);
   }
@@ -183,6 +196,7 @@ class _$AuthenticationLogoutRequested implements AuthenticationLogoutRequested {
         authenticationLogoutRequested,
     TResult Function(AuthenticationStatusChanged value)?
         authenticationStatusChanged,
+    TResult Function(AuthenticationStarted value)? authenticationStarted,
     required TResult orElse(),
   }) {
     if (authenticationLogoutRequested != null) {
@@ -269,6 +283,7 @@ class _$AuthenticationStatusChanged implements AuthenticationStatusChanged {
     required TResult Function() authenticationLogoutRequested,
     required TResult Function(AuthenticationStatus status)
         authenticationStatusChanged,
+    required TResult Function() authenticationStarted,
   }) {
     return authenticationStatusChanged(status);
   }
@@ -278,6 +293,7 @@ class _$AuthenticationStatusChanged implements AuthenticationStatusChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? authenticationLogoutRequested,
     TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? authenticationStarted,
   }) {
     return authenticationStatusChanged?.call(status);
   }
@@ -287,6 +303,7 @@ class _$AuthenticationStatusChanged implements AuthenticationStatusChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? authenticationLogoutRequested,
     TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? authenticationStarted,
     required TResult orElse(),
   }) {
     if (authenticationStatusChanged != null) {
@@ -302,6 +319,8 @@ class _$AuthenticationStatusChanged implements AuthenticationStatusChanged {
         authenticationLogoutRequested,
     required TResult Function(AuthenticationStatusChanged value)
         authenticationStatusChanged,
+    required TResult Function(AuthenticationStarted value)
+        authenticationStarted,
   }) {
     return authenticationStatusChanged(this);
   }
@@ -313,6 +332,7 @@ class _$AuthenticationStatusChanged implements AuthenticationStatusChanged {
         authenticationLogoutRequested,
     TResult Function(AuthenticationStatusChanged value)?
         authenticationStatusChanged,
+    TResult Function(AuthenticationStarted value)? authenticationStarted,
   }) {
     return authenticationStatusChanged?.call(this);
   }
@@ -324,6 +344,7 @@ class _$AuthenticationStatusChanged implements AuthenticationStatusChanged {
         authenticationLogoutRequested,
     TResult Function(AuthenticationStatusChanged value)?
         authenticationStatusChanged,
+    TResult Function(AuthenticationStarted value)? authenticationStarted,
     required TResult orElse(),
   }) {
     if (authenticationStatusChanged != null) {
@@ -344,9 +365,129 @@ abstract class AuthenticationStatusChanged implements AuthenticationEvent {
 }
 
 /// @nodoc
+abstract class _$$AuthenticationStartedCopyWith<$Res> {
+  factory _$$AuthenticationStartedCopyWith(_$AuthenticationStarted value,
+          $Res Function(_$AuthenticationStarted) then) =
+      __$$AuthenticationStartedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AuthenticationStartedCopyWithImpl<$Res>
+    extends _$AuthenticationEventCopyWithImpl<$Res>
+    implements _$$AuthenticationStartedCopyWith<$Res> {
+  __$$AuthenticationStartedCopyWithImpl(_$AuthenticationStarted _value,
+      $Res Function(_$AuthenticationStarted) _then)
+      : super(_value, (v) => _then(v as _$AuthenticationStarted));
+
+  @override
+  _$AuthenticationStarted get _value => super._value as _$AuthenticationStarted;
+}
+
+/// @nodoc
+
+class _$AuthenticationStarted implements AuthenticationStarted {
+  const _$AuthenticationStarted();
+
+  @override
+  String toString() {
+    return 'AuthenticationEvent.authenticationStarted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AuthenticationStarted);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() authenticationLogoutRequested,
+    required TResult Function(AuthenticationStatus status)
+        authenticationStatusChanged,
+    required TResult Function() authenticationStarted,
+  }) {
+    return authenticationStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? authenticationLogoutRequested,
+    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? authenticationStarted,
+  }) {
+    return authenticationStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? authenticationLogoutRequested,
+    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? authenticationStarted,
+    required TResult orElse(),
+  }) {
+    if (authenticationStarted != null) {
+      return authenticationStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AuthenticationLogoutRequested value)
+        authenticationLogoutRequested,
+    required TResult Function(AuthenticationStatusChanged value)
+        authenticationStatusChanged,
+    required TResult Function(AuthenticationStarted value)
+        authenticationStarted,
+  }) {
+    return authenticationStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AuthenticationLogoutRequested value)?
+        authenticationLogoutRequested,
+    TResult Function(AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult Function(AuthenticationStarted value)? authenticationStarted,
+  }) {
+    return authenticationStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthenticationLogoutRequested value)?
+        authenticationLogoutRequested,
+    TResult Function(AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult Function(AuthenticationStarted value)? authenticationStarted,
+    required TResult orElse(),
+  }) {
+    if (authenticationStarted != null) {
+      return authenticationStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthenticationStarted implements AuthenticationEvent {
+  const factory AuthenticationStarted() = _$AuthenticationStarted;
+}
+
+/// @nodoc
 mixin _$AuthenticationState {
   AuthenticationStatus get authenticationStatus =>
       throw _privateConstructorUsedError;
+  AuthenticationResult get authModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthenticationStateCopyWith<AuthenticationState> get copyWith =>
@@ -358,7 +499,11 @@ abstract class $AuthenticationStateCopyWith<$Res> {
   factory $AuthenticationStateCopyWith(
           AuthenticationState value, $Res Function(AuthenticationState) then) =
       _$AuthenticationStateCopyWithImpl<$Res>;
-  $Res call({AuthenticationStatus authenticationStatus});
+  $Res call(
+      {AuthenticationStatus authenticationStatus,
+      AuthenticationResult authModel});
+
+  $AuthenticationResultCopyWith<$Res> get authModel;
 }
 
 /// @nodoc
@@ -373,13 +518,25 @@ class _$AuthenticationStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? authenticationStatus = freezed,
+    Object? authModel = freezed,
   }) {
     return _then(_value.copyWith(
       authenticationStatus: authenticationStatus == freezed
           ? _value.authenticationStatus
           : authenticationStatus // ignore: cast_nullable_to_non_nullable
               as AuthenticationStatus,
+      authModel: authModel == freezed
+          ? _value.authModel
+          : authModel // ignore: cast_nullable_to_non_nullable
+              as AuthenticationResult,
     ));
+  }
+
+  @override
+  $AuthenticationResultCopyWith<$Res> get authModel {
+    return $AuthenticationResultCopyWith<$Res>(_value.authModel, (value) {
+      return _then(_value.copyWith(authModel: value));
+    });
   }
 }
 
@@ -390,7 +547,12 @@ abstract class _$$_AuthenticationStateCopyWith<$Res>
           $Res Function(_$_AuthenticationState) then) =
       __$$_AuthenticationStateCopyWithImpl<$Res>;
   @override
-  $Res call({AuthenticationStatus authenticationStatus});
+  $Res call(
+      {AuthenticationStatus authenticationStatus,
+      AuthenticationResult authModel});
+
+  @override
+  $AuthenticationResultCopyWith<$Res> get authModel;
 }
 
 /// @nodoc
@@ -407,12 +569,17 @@ class __$$_AuthenticationStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? authenticationStatus = freezed,
+    Object? authModel = freezed,
   }) {
     return _then(_$_AuthenticationState(
       authenticationStatus == freezed
           ? _value.authenticationStatus
           : authenticationStatus // ignore: cast_nullable_to_non_nullable
               as AuthenticationStatus,
+      authModel == freezed
+          ? _value.authModel
+          : authModel // ignore: cast_nullable_to_non_nullable
+              as AuthenticationResult,
     ));
   }
 }
@@ -420,14 +587,16 @@ class __$$_AuthenticationStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AuthenticationState implements _AuthenticationState {
-  const _$_AuthenticationState(this.authenticationStatus);
+  const _$_AuthenticationState(this.authenticationStatus, this.authModel);
 
   @override
   final AuthenticationStatus authenticationStatus;
+  @override
+  final AuthenticationResult authModel;
 
   @override
   String toString() {
-    return 'AuthenticationState(authenticationStatus: $authenticationStatus)';
+    return 'AuthenticationState(authenticationStatus: $authenticationStatus, authModel: $authModel)';
   }
 
   @override
@@ -436,12 +605,15 @@ class _$_AuthenticationState implements _AuthenticationState {
         (other.runtimeType == runtimeType &&
             other is _$_AuthenticationState &&
             const DeepCollectionEquality()
-                .equals(other.authenticationStatus, authenticationStatus));
+                .equals(other.authenticationStatus, authenticationStatus) &&
+            const DeepCollectionEquality().equals(other.authModel, authModel));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(authenticationStatus));
+      runtimeType,
+      const DeepCollectionEquality().hash(authenticationStatus),
+      const DeepCollectionEquality().hash(authModel));
 
   @JsonKey(ignore: true)
   @override
@@ -452,10 +624,13 @@ class _$_AuthenticationState implements _AuthenticationState {
 
 abstract class _AuthenticationState implements AuthenticationState {
   const factory _AuthenticationState(
-      final AuthenticationStatus authenticationStatus) = _$_AuthenticationState;
+      final AuthenticationStatus authenticationStatus,
+      final AuthenticationResult authModel) = _$_AuthenticationState;
 
   @override
   AuthenticationStatus get authenticationStatus;
+  @override
+  AuthenticationResult get authModel;
   @override
   @JsonKey(ignore: true)
   _$$_AuthenticationStateCopyWith<_$_AuthenticationState> get copyWith =>
