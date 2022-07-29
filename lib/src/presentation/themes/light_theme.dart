@@ -5,7 +5,6 @@ final _lightColorScheme = ColorScheme.fromSeed(seedColor: const Color(0xFF6946C1
 ThemeData lightThemeData(BuildContext context) {
   return ThemeData(
       scaffoldBackgroundColor: _lightColorScheme.background,
-      splashColor: _lightColorScheme.outline,
       primaryColor: _lightColorScheme.primary,
       backgroundColor: _lightColorScheme.background,
       appBarTheme: AppBarTheme(

@@ -5,7 +5,7 @@ import '../../../../../injection.dart';
 import '../../../l10n/l10n.dart';
 import '../../../layout/insets.dart';
 import '../../../widgets/form_input.dart';
-import '../cubit/login_cubit.dart';
+import '../cubits/login_cubit.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({

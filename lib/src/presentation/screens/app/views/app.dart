@@ -5,6 +5,7 @@ import '../../../../../injection.dart';
 import '../../../../repositories/authentication_repository.dart';
 import '../../../l10n/l10n.dart';
 import '../../../themes/light_theme.dart';
+import '../../home/home.dart';
 import '../../login/login.dart';
 import '../blocs/bloc.dart';
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
           builder: (context, state) {
-            return state.authenticationStatus.isUnAuthenticated ? const LoginScreen() : Container();
+            return state.authenticationStatus.isUnAuthenticated ? const LoginScreen() : const HomeScreen();
           },
         ),
       ),
