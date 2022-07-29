@@ -1,0 +1,8 @@
+{
+    "loginTitle": "Đăng nhập",
+    "login": "Đăng nhập",
+    "username": "Tên đăng nhập",
+    "usernameValidationText": "Tên đăng nhập phải từ 8 đến 25 ký tự!",
+    "password": "Mật khẩu",
+    "passwordValidationText": "Mật khẩu không phù hợp!"
+}
