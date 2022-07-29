@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/bloc_base/base_bloc.dart';
 import '../../../../core/models/input_model.dart';
-import '../../../../repositories/authentication_repository.dart';
+import '../../../../repositories/repository.dart' show AuthenticationRepository;
 
 part 'login_cubit.freezed.dart';
 part 'login_state.dart';

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../../repositories/authentication_repository.dart';
+import '../../../../../repositories/repository.dart';
 import '../../models/authentication_result.dart';
 
 part 'authentication_bloc.freezed.dart';
@@ -38,7 +38,14 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     }
   }
 
-  void _onAuthenticationStarted(AuthenticationStarted event, Emitter<AuthenticationState> emit) {}
+  void _onAuthenticationStarted(AuthenticationStarted event, Emitter<AuthenticationState> emit) async {
+    final userLoggedIn = await _authenticationRepository.isUserLoggedIn();
+    if (userLoggedIn) {
+      emit(state.copyWith(authenticationStatus: AuthenticationStatus.authenticated));
+    } else {
+      emit(state.copyWith(authenticationStatus: AuthenticationStatus.unauthenticated));
+    }
+  }
 
   @override
   Future<void> close() {

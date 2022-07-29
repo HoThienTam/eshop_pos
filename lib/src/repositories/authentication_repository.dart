@@ -33,6 +33,11 @@ class AuthenticationRepository {
     return 'token';
   }
 
+  Future<bool> isUserLoggedIn() async {
+    final token = await _accessTokenService.retrieveToken();
+    return token.fold((l) => true, (r) => false);
+  }
+
   void logOut() {
     _controller.add(AuthenticationStatus.unauthenticated);
   }

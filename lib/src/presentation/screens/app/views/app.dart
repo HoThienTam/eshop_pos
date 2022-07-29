@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           create: (context) => getIt<LoadingBloc>(),
         ),
         BlocProvider(
-          create: (context) => getIt<AuthenticationBloc>(),
+          create: (context) => getIt<AuthenticationBloc>()..add(const AuthenticationStarted()),
         ),
       ],
       child: MaterialApp(
